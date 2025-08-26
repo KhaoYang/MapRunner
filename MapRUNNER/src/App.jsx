@@ -1,3 +1,4 @@
+
 import { useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
 
@@ -10,7 +11,7 @@ function App() {
   const mapContainerRef = useRef()
 
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhb3lhbmciLCJhIjoiY21lcnhld2N3MGMwcjJpcTZtNWxqNHAxYiJ9.mDZuEmUsH2Z16QPAhDRcBg'
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
   });
