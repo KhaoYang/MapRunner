@@ -8,7 +8,7 @@ const INITIAL_CENTER = [
   -88.2294,
   40.1020
 ]
-const INITIAL_ZOOM = 10.12
+const INITIAL_ZOOM = 2
 
 function App() {
   const mapRef = useRef()
@@ -23,7 +23,17 @@ function App() {
       container: mapContainerRef.current,
       center: center,
       zoom: zoom
-    });
+    })
+
+    mapRef.current.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+      })
+    )
 
     mapRef.current.on('move', () => {
       const mapCenter = mapRef.current.getCenter()
