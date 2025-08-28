@@ -5,10 +5,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import './App.css'
 
 const INITIAL_CENTER = [
-  -88.2294,
-  40.1020
+  -122.009102,
+  37.334606
 ]
-const INITIAL_ZOOM = 2
+const INITIAL_ZOOM = 15
 
 function App() {
   const mapRef = useRef()
