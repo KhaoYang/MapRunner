@@ -35,3 +35,76 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4f8cff 0%, #38e8ff 100%);
+  color: #fff;
+}
+
+.home-screen h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.home-screen button {
+  padding: 12px 32px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #4f8cff;
+  cursor: pointer;
+  margin-top: 1em;
+  transition: background 0.2s;
+}
+
+.home-screen button:hover {
+  background: #e0e0e0;
+}
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f5f7fa;
+}
+
+.login-screen h2 {
+  margin-bottom: 1em;
+}
+
+.login-screen form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 300px;
+}
+
+.login-screen input {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.login-screen button {
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 6px;
+  border: none;
+  background: #4f8cff;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-screen button:hover {
+  background: #357ae8;
+}
