@@ -16,13 +16,16 @@ function App() {
 
   const [center, setCenter] = useState(INITIAL_CENTER)
   const [zoom, setZoom] = useState(INITIAL_ZOOM)
+  const [showHome, setShowHome] = useState(true)
 
   useEffect(() => {
+    if (showHome) return;
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       center: center,
-      zoom: zoom
+      zoom: zoom,
+      style: 'mapbox://styles/khaoyang/cmf5t9p4n001d01s76vb1fjnc'
     })
 
     mapRef.current.addControl(
@@ -45,14 +48,24 @@ function App() {
     return () => {
       mapRef.current.remove()
     }
-  }, [])
+  }, [showHome])
 
   return (
     <>
-      <div className="sidebar">
-        Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
-      </div>
-      <div id='map-container' ref={mapContainerRef} />
+      {showHome ? (
+        <div className="home-screen" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh'}}>
+          <h1>Welcome to MapRunner</h1>
+          <p>Click below to start exploring the map.</p>
+          <button onClick={() => setShowHome(false)} style={{padding: '10px 20px', fontSize: '1.2em'}}>Start</button>
+        </div>
+      ) : (
+        <>
+          <div className="sidebar">
+            Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
+          </div>
+          <div id='map-container' ref={mapContainerRef} />
+        </>
+      )}
     </>
   )
 }
