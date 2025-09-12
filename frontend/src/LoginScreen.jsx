@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function LoginScreen() {
+function LoginScreen({onLogin}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,7 +22,7 @@ function LoginScreen() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button onClick={onLogin} type="submit">Login</button>
       </form>
     </div>
   );
