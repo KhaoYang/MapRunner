@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 
-function LoginScreen({ onLogin, onShowRegister }) {
+function RegisterScreen({ onRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
       const data = await response.json();
-      if (response.ok && data.token) {
-        localStorage.setItem('token', data.token);
-        onLogin();
+      if (response.ok) {
+        setSuccess('Registration successful! You can now log in.');
+        if (onRegister) onRegister();
       } else {
-        setError(data.error || 'Login failed');
+        setError(data.error || 'Registration failed');
       }
     } catch (err) {
       setError('Network error');
@@ -27,9 +29,9 @@ function LoginScreen({ onLogin, onShowRegister }) {
   };
 
   return (
-    <div className="login-screen">
-      <h2>Login</h2>
-  <form onSubmit={handleSubmit}>
+    <div className="register-screen">
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
@@ -44,12 +46,12 @@ function LoginScreen({ onLogin, onShowRegister }) {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
-        <button type="button" onClick={onShowRegister}>Register</button>
+        <button type="submit">Register</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>{success}</p>}
     </div>
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
