@@ -25,7 +25,8 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
-    "ors": "^1.0.0"
+    "ors": "^1.0.0",
+    "react-router-dom": "^7.9.3"
   },
   "devDependencies": {
     "nodeman": "^1.1.2",

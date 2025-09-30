@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen';
 import MapView from './MapView';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
+import {Routes, Route} from 'react-router-dom';
 
 const INITIAL_CENTER = [
   -122.009102,
@@ -22,7 +23,13 @@ function App() {
 
   return (
     <>
-      {showRegister ? (
+      <Routes>
+        <Route path = "/" element = {<HomeScreen />} />
+        <Route path = "/login" element = {<LoginScreen />}/>
+        <Route path = "/register" element = {<RegisterScreen/>} />
+        <Route path = "/map" element = {<MapView />}/>
+      </Routes>
+      {/* {showRegister ? (
         <RegisterScreen onRegister={() => { setShowRegister(false); setShowLogin(true); }} />
       ) : showLogin ? (
         <LoginScreen onLogin={() => { setShowLogin(false); setShowHome(true); }} onShowRegister={() => { setShowLogin(false); setShowRegister(true); }} />
@@ -39,7 +46,7 @@ function App() {
             <span>Already have an account? <button onClick={() => { setShowRegister(false); setShowLogin(true); }}>Login</button></span>
           )}
         </div>
-      )}
+      )} */}
     </>
   );
 }
