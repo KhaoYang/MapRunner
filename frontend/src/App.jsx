@@ -6,7 +6,7 @@ import HomeScreen from './HomeScreen';
 import MapView from './MapView';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
-import {Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 const INITIAL_CENTER = [
   -122.009102,
@@ -17,37 +17,16 @@ const INITIAL_ZOOM = 10;
 function App() {
   const [center, setCenter] = useState(INITIAL_CENTER);
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
-  const [showLogin, setShowLogin] = useState(true);
-  const [showRegister, setShowRegister] = useState(false);
-  const [showHome, setShowHome] = useState(false);
 
   return (
-    <>
+    <BrowserRouter>
       <Routes>
-        <Route path = "/" element = {<HomeScreen />} />
-        <Route path = "/login" element = {<LoginScreen />}/>
-        <Route path = "/register" element = {<RegisterScreen/>} />
-        <Route path = "/map" element = {<MapView />}/>
+        <Route path="/" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/map" element={<MapView center={center} zoom={zoom} setCenter={setCenter} setZoom={setZoom} />} />
       </Routes>
-      {/* {showRegister ? (
-        <RegisterScreen onRegister={() => { setShowRegister(false); setShowLogin(true); }} />
-      ) : showLogin ? (
-        <LoginScreen onLogin={() => { setShowLogin(false); setShowHome(true); }} onShowRegister={() => { setShowLogin(false); setShowRegister(true); }} />
-      ) : showHome ? (
-        <HomeScreen onStart={() => setShowHome(false)} />
-      ) : (
-        <MapView center={center} zoom={zoom} setCenter={setCenter} setZoom={setZoom} />
-      )}
-      {(showLogin || showRegister) && (
-        <div style={{ textAlign: 'center', marginTop: 16 }}>
-          {showLogin ? (
-            <span>Don't have an account? <button onClick={() => { setShowLogin(false); setShowRegister(true); }}>Register</button></span>
-          ) : (
-            <span>Already have an account? <button onClick={() => { setShowRegister(false); setShowLogin(true); }}>Login</button></span>
-          )}
-        </div>
-      )} */}
-    </>
+    </BrowserRouter>
   );
 }
 

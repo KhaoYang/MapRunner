@@ -25,6 +25,14 @@
   margin: 12px;
   border-radius: 4px;
 }
+.leftbutton {
+  position: absolute;
+  color: #4b8de4;
+  font-family: monospace;
+  top: 100px;
+  left: 20px;
+  z-index: 2;
+}
 
 .reset-button {
   position: absolute;

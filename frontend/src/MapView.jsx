@@ -38,10 +38,12 @@ function MapView({ center, zoom, setCenter, setZoom }) {
 
   return (
     <>
+      
       <div className="sidebar">
         Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
       </div>
       <div id="map-container" ref={mapContainerRef} />
+      <button className = "leftbutton" style={{backgroundColor: 'blue', padding: '10px 20px', fontSize: '1.2em'}}>Restaurants</button>
     </>
   );
 }

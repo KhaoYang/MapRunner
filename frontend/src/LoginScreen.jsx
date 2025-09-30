@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function LoginScreen({ onLogin, onShowRegister }) {
+function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ function LoginScreen({ onLogin, onShowRegister }) {
       const data = await response.json();
       if (response.ok && data.token) {
         localStorage.setItem('token', data.token);
-        onLogin();
+        navigate('/home');
       } else {
         setError(data.error || 'Login failed');
       }
@@ -30,7 +31,7 @@ function LoginScreen({ onLogin, onShowRegister }) {
   return (
     <div className="login-screen">
       <h2>Login</h2>
-  <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
@@ -46,7 +47,7 @@ function LoginScreen({ onLogin, onShowRegister }) {
           required
         />
         <button type="submit">Login</button>
-        <button type="button" onClick={onShowRegister}>Register</button>
+        <button type="button" onClick={() => navigate('/register')}>Register</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>

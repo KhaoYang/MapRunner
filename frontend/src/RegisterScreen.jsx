@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function RegisterScreen({ onRegister }) {
+function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ function RegisterScreen({ onRegister }) {
       const data = await response.json();
       if (response.ok) {
         setSuccess('Registration successful! You can now log in.');
-        if (onRegister) onRegister();
+        setTimeout(() => navigate('/'), 1000);
       } else {
         setError(data.error || 'Registration failed');
       }
