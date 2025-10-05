@@ -7,6 +7,7 @@ import MapView from './MapView';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import RestaurantList from './RestaurantList';
 
 const INITIAL_CENTER = [
   -122.009102,
@@ -25,6 +26,7 @@ function App() {
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/map" element={<MapView center={center} zoom={zoom} setCenter={setCenter} setZoom={setZoom} />} />
+        <Route path = "/restaurants" element = {<RestaurantList/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -190,3 +190,184 @@
 .hamburger-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Restaurant List Styles */
+.restaurant-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #4f8cff;
+}
+
+.restaurant-count {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.restaurant-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.restaurant-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-item.selected {
+  border-color: #4f8cff;
+  box-shadow: 0 4px 16px rgba(79, 140, 255, 0.2);
+}
+
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.restaurant-name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.restaurant-stars {
+  font-size: 18px;
+}
+
+.restaurant-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.restaurant-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.restaurant-cuisine {
+  font-weight: 500;
+}
+
+.restaurant-description {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* Modal Styles */
+.selected-restaurant-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.modal-content h2 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+}
+
+.modal-stars {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-details p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.modal-description {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.modal-description h4 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+}
+
+.modal-description p {
+  line-height: 1.6;
+  color: #555;
+}

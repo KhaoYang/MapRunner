@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -6,6 +7,7 @@ function MapView({ center, zoom, setCenter, setZoom }) {
   const mapRef = useRef();
   const mapContainerRef = useRef();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -54,8 +56,8 @@ function MapView({ center, zoom, setCenter, setZoom }) {
             </button>
           </li>
           <li>
-            <button className="nav-item-btn">
-              My Restaurants
+            <button onClick={() => navigate('/restaurants')} className="nav-item-btn">
+              🍽️ My Restaurants
             </button>
           </li>
           <li>
