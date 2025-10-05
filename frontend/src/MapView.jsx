@@ -1,9 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function MapView({ center, zoom, setCenter, setZoom }) {
   const mapRef = useRef();
   const mapContainerRef = useRef();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   useEffect(() => {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -38,12 +44,45 @@ function MapView({ center, zoom, setCenter, setZoom }) {
 
   return (
     <>
+      {/* Navigation Sidebar */}
+      <div className={`nav-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+        <h2>Navigation</h2>
+        <ul>
+          <li>
+            <button className="nav-item-btn">
+              Profile
+            </button>
+          </li>
+          <li>
+            <button className="nav-item-btn">
+              My Restaurants
+            </button>
+          </li>
+          <li>
+            <button className="nav-item-btn">
+              Wishlist
+            </button>
+          </li>
+          <li>
+            <button className="nav-item-btn">
+              Settings
+            </button>
+          </li>
+        </ul>
+      </div>
+      
+      {/* Overlay when sidebar is open */}
+      {sidebarOpen && (
+        <div className="sidebar-overlay" onClick={toggleSidebar} />
+      )}
       
       <div className="sidebar">
         Longitude: {center[0].toFixed(4)} | Latitude: {center[1].toFixed(4)} | Zoom: {zoom.toFixed(2)}
       </div>
       <div id="map-container" ref={mapContainerRef} />
-      <button className = "leftbutton" style={{backgroundColor: 'blue', padding: '10px 20px', fontSize: '1.2em'}}>Restaurants</button>
+      <button className="hamburger-btn" onClick={toggleSidebar}>
+        <GiHamburgerMenu />
+      </button>
     </>
   );
 }
